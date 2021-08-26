@@ -1,0 +1,62 @@
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica;
+    color: #323232;
+    /* border: none; */
+}
+
+body {
+    background-image: url('img/wittel-bg.png');
+    background-size: cover;
+}
+
+/* textarea:focus {
+    outline: none;
+} */
+
+/* Form Container */
+#form-container {
+    background-color: aliceblue;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    margin-top: 10vh;
+    border-radius: 10px;
+    text-align: center;
+}
+
+form {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.alert {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#form-container p:last-child {
+    margin-top: 40px;
+    text-align: justify;
+    font-size: .8rem;
+}
+
+/* Welcome Container */
+#welcome-container {
+    background-color: aliceblue;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 30px;
+    margin-top: 10vh;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#welcome-container p {
+    margin-top: 20px;
+}

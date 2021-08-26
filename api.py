@@ -2,25 +2,25 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from leia import SentimentIntensityAnalyzer
+from vader import SentimentScore
 
 app = FastAPI()
-
-def get_polarity_score(text):
-    analyzer = SentimentIntensityAnalyzer()
-    polarity_score = analyzer.polarity_scores(text)['compound']
-    return polarity_score
-
-
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/index", response_class=HTMLResponse)
+
+@app.get("/")
 def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
+@app.get("/form", response_class=HTMLResponse)
+def form(request: Request):
+    return templates.TemplateResponse("sentiment/form.html", {"request": request})
+
+
 @app.post("/sentiment-score", response_class=HTMLResponse)
 def sentiment_score(request: Request, phrase: str = Form(...)):
-    return templates.TemplateResponse("response.html", {"request": request, 
+    return templates.TemplateResponse("sentiment/response.html", {"request": request, 
                                                         "phrase": phrase,
-                                                        "sentiment_score": get_polarity_score(phrase)})
+                                                        "sentiment_score": SentimentScore.get(phrase)})
