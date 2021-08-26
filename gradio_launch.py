@@ -2,8 +2,12 @@ import gradio as gr
 from vader import SentimentScore
 
 
+def score(text):
+    return SentimentScore.get(text)["score"]
+
+
 interface = gr.Interface(
-    fn=SentimentScore.get, 
+    fn=score, 
     inputs=gr.inputs.Textbox(lines=2, placeholder="Escreva aqui..."), 
     outputs=["number"],
     title="Análise de Sentimentos",
