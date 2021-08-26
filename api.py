@@ -3,6 +3,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from vader import SentimentScore
+from mangum import Mangum
+
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -24,3 +26,6 @@ def sentiment_score(request: Request, phrase: str = Form(...)):
     return templates.TemplateResponse("sentiment/response.html", {"request": request, 
                                                                   "phrase": phrase,
                                                                   "sentiment_score": SentimentScore.get(phrase)})
+
+
+handler = Mangum(app=app)

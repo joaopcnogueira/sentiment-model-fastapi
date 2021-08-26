@@ -1,6 +1,6 @@
-gradio==2.2.14
 fastapi
 uvicorn
 jinja2
 aiofiles
 python-multipart
+mangum
