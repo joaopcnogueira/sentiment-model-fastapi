@@ -12,7 +12,7 @@
 
     <div id="form-container">
         <h1>Modelo de Sentimento</h1>
-        <form action="/sentiment-score" method="post">
+        <form action="{{ url_for('sentiment_score') }}" method="post">
             <div>
                 <p>Digite uma frase: </p>
                 <textarea name="phrase" id="phrase" cols="50" rows="3"></textarea>

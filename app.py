@@ -1,14 +1,14 @@
 import gradio as gr
-from leia import SentimentIntensityAnalyzer
+from vader import SentimentScore
 
 
-def get_polarity_score(text):
-    analyzer = SentimentIntensityAnalyzer()
-    polarity_score = analyzer.polarity_scores(text)['compound']
-    return polarity_score
+# def get_polarity_score(text):
+#     analyzer = SentimentIntensityAnalyzer()
+#     polarity_score = analyzer.polarity_scores(text)['compound']
+#     return polarity_score
 
 interface = gr.Interface(
-    fn=get_polarity_score, 
+    fn=SentimentScore.get, 
     inputs=gr.inputs.Textbox(lines=2, placeholder="Escreva aqui..."), 
     outputs=["number"],
     title="Análise de Sentimentos",

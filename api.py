@@ -14,13 +14,13 @@ def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/form", response_class=HTMLResponse)
-def form(request: Request):
+@app.get("/sentiment-form", response_class=HTMLResponse)
+def sentiment_form(request: Request):
     return templates.TemplateResponse("sentiment/form.html", {"request": request})
 
 
 @app.post("/sentiment-score", response_class=HTMLResponse)
 def sentiment_score(request: Request, phrase: str = Form(...)):
     return templates.TemplateResponse("sentiment/response.html", {"request": request, 
-                                                        "phrase": phrase,
-                                                        "sentiment_score": SentimentScore.get(phrase)})
+                                                                  "phrase": phrase,
+                                                                  "sentiment_score": SentimentScore.get(phrase)})

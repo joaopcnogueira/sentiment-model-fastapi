@@ -11,22 +11,20 @@
 <body>
     <div id="form-container">
         <h1>Modelo de Sentimento</h1>
-        <form action="/sentiment-score" method="post">
+            <form>
             <div>
                 <p>Digite uma frase: </p>
                 <textarea name="phrase" id="phrase" cols="50" rows="3">{{ phrase }}</textarea>
             </div>
 
-            <div class="alert alert-success" role="alert">
-                <h1>Score</h1>
-                <h4>{{ sentiment_score }}</h4>
+            <div class="alert alert-{{ sentiment_score.class }}" role="alert">
+                <h1>Sentimento {{ sentiment_score.sentiment | title }}</h1>
+                <h4>{{ sentiment_score.score }}</h4>
                 <p id="score-explanation">O score de sentimento varia entre -1 e +1. Quanto mais próximo de -1, mais negativo é o sentimento e vice-versa. 
                     Caso o score de sentimento caia em uma região entre -0.05 e +0.05, dizemos que a frase apresenta um sentimento neutro.
                 </p>
             </div>
-
-            <a href="/form" class="btn btn-primary">Tentar novamente</a>
-            
+            <a href="{{ url_for('sentiment_form') }}" class="btn btn-primary">Tentar novamente</a>
         </form>
     </div>
 </body>
